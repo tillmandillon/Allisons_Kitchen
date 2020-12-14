@@ -2,12 +2,6 @@
 <html>
 <head>
 <style>
-@media only screen and (max-width: 600px) {
-	input {
-		width: 80%;
-		height: 30%;
-	}
-}
 .container {
 	width: 90%;
 	margin: auto;
@@ -42,32 +36,53 @@ h2 {
 <body>
 <div class="container">
 	<h1>Grams to Cups</h1>
-	<input type="number" id="grams" placeholder="20" onchange="convert()"></input>
+	<input type="number" id="grams" placeholder="20" oninput="convert()"></input>
 	<label for="grams"> grams</label>
 	<p> of a substance with a density of </p>
-	<input type="number" id="density" placeholder="1.03" onchange="convert()"></input>
+	<input type="number" id="density" placeholder="1.03" oninput="convert()"></input>
 	<label for="density"> grams/cm<sup>3</sup></label>
 	<p> is the same as </p>
-	<input type="number" id="cups" placeholder="0.0821" readonly></input> <!--19.4175 mL-->
-	<label for="cups"> cups.</label>
+	<input type="number" id="volume" placeholder="0.0821" readonly></input> <!--19.4175 mL-->
+	<label for="cups">
+		<select id="volumeSelect" onchange="convert()">
+			<option value="cups" selected>cups</option>
+			<option value="tablespoons">tablespoons</option>
+			<option value="teaspoons">teaspoons</option>
+			<option value="ounce">ounces</option>
+			<option value="gallon">gallons</option>
+		</select>
+	</label>
 </div>
 <br> <br> <br> <br>
 <center><h2>Common Densities</h2></center>
 <div class="commonContainer">
 	<ul>
 		<li>lemon juice - 1.03 g/cm<sup>3</sup></li>
-		<li>sugar - 1.59 g/cm<sup>3</sup></li>
+		<li>sugar - 0.85 g/cm<sup>3</sup></li>
 		<li>water - 1 g/cm<sup>3</sup></li>
+		<li>flour, wheat - 0.593 g/cm<sup>3</sup></li>
+		<li>flour, bread - 0.51 g/cm<sup>3</sup></li>
+		<li>brown sugar - 0.93 g/cm<sup>3</sup></li>
+		<li>baking powder - 0.97 g/cm<sup>3</sup></li>
+		<li>baking soda - 2.2 g/cm<sup>3</sup></li>
+		<li>butter - 0.96 g/cm<sup>3</sup></li>
+		<li>dry goods (general) - 0.541 g/cm<sup>3</sup></li>
 	</ul>
 </div>
 <script>
 function convert() {
 	grams = document.getElementById("grams").value;
 	density = document.getElementById("density").value;
+	volumeSelect = document.getElementById("volumeSelect").value;
 	mL = grams / density;
-	cups = mL / 236.59;
-	cups = round(cups);
-	document.getElementById("cups").value = cups;
+	volume = 999;
+	if (volumeSelect == "cups") { volume = mL / 236.588; }
+	else if (volumeSelect == "tablespoons") { volume = mL / 14.7868; }
+	else if (volumeSelect == "teaspoons") { volume = mL / 4.92892; }
+	else if (volumeSelect == "ounces") { volume = mL / 29.5735; }
+	else if (volumeSelect == "gallons") { volume = mL / 3785.41; }
+	volume = round(volume);
+	document.getElementById("volume").value = volume;
 }
 
 function round(num) {
