@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+.container {
+	width: 90%;
+	margin: auto;
+	text-align: center;
+	padding-top: 75px;
+}
+
+.commonContainer {
+	display: flex;
+	justify-content: center;
+}
+
+p {
+	display: inline;
+}
+
+label {
+	display: inline;
+}
+
+input {
+	width: 75px;
+	margin-left: 10px;
+	margin-right: 0px;
+}
+
+h2 {
+	margin-bottom: 0px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+	<h1>Grams to Cups</h1>
+	<input type="number" id="grams" placeholder="20" onchange="convert()"></input>
+	<label for="grams"> grams</label>
+	<p> of a substance with a density of </p>
+	<input type="number" id="density" placeholder="1.03" onchange="convert()"></input>
+	<label for="density"> grams/cm<sup>3</sup></label>
+	<p> is the same as </p>
+	<input type="number" id="cups" placeholder="0.0821" readonly></input> <!--19.4175 mL-->
+	<label for="cups"> cups.</label>
+</div>
+<br> <br> <br> <br>
+<center><h2>Common Densities</h2></center>
+<div class="commonContainer">
+	<ul>
+		<li>lemon juice - 1.03 g/cm<sup>3</sup></li>
+		<li>sugar - 1.59 g/cm<sup>3</sup></li>
+		<li>water - 1 g/cm<sup>3</sup></li>
+	</ul>
+</div>
+<script>
+function convert() {
+	grams = document.getElementById("grams").value;
+	density = document.getElementById("density").value;
+	mL = grams / density;
+	cups = mL / 236.59;
+	cups = round(cups);
+	document.getElementById("cups").value = cups;
+}
+
+function round(num) {
+	return Math.round(num * Math.pow(10, 4)) / Math.pow(10,4);
+}
+</script>
+</body>
+</html>
