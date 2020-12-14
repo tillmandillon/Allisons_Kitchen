@@ -1,7 +1,12 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100&effect=neon|outline|emboss|shadow-multiple">
 <style>
+body {
+	background-color: #000000;
+}
+
 .container {
 	width: 90%;
 	margin: auto;
@@ -16,26 +21,81 @@
 
 p {
 	display: inline;
+	color: white;
 }
 
 label {
 	display: inline;
+	color: white;
 }
 
 input {
 	width: 75px;
+	height: 20px;
 	margin-left: 10px;
 	margin-right: 0px;
+	border-radius: 8px;
+	padding-left: 10px;
+}
+
+select {
+	height: 20px;
+	margin-left: 0px;
+	margin-right: 0px;
+	border-radius: 5px;
+	padding-left: 10px;
 }
 
 h2 {
 	margin-bottom: 0px;
+	color: white;
+}
+
+.titleBar {
+	font-size: 75px;
+	font-family: "Lato", sans-serif;
+	margin-bottom: 0;
+	margin-top: 0;
+	padding-top: 15px;
+	padding-bottom: 0;
+	display: inline block;
+}
+
+ul {
+	color: white;
+}
+
+.description {
+	margin-left: 20%;
+	margin-right: 20%;
+	text-align: center;
+}
+
+.hat {
+	filter: invert(1);
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
+	width: 60px;
+	height: auto;
+	margin-left: 20px;
+	user-drag: none;
+	user-select: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
 }
 </style>
 </head>
 <body>
+<center><h1 class="titleBar font-effect-neon">Allison's Kitchen<img src="chef_hat.png" class="hat"></h1></center>
+
 <div class="container">
-	<h1>Grams to Cups</h1>
+	<h1 style="color: white; margin-top: 0;">Grams to ... ?</h1>
+	<div class="description">
+		<center><i><p>Type in the number of grams required in the recipe, followed by the density of the substance you are measuring. 
+		Some common densities are listed below, but others may need to be googled (ensure you find the result in g/cm<sup>3</sup>).
+		Lastly, use the dropdown menu to pick what unit you would like the measure in.</p></i></center>
+	</div>
+	<br><br>
 	<input type="number" id="grams" placeholder="20" oninput="convert()"></input>
 	<label for="grams"> grams</label>
 	<p> of a substance with a density of </p>
@@ -53,7 +113,7 @@ h2 {
 		</select>
 	</label>
 </div>
-<br> <br> <br> <br>
+<br>
 <center><h2>Common Densities</h2></center>
 <div class="commonContainer">
 	<ul>
