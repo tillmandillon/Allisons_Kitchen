@@ -16,7 +16,6 @@
 
 p {
 	display: inline;
-	color: red;
 }
 
 label {
@@ -37,13 +36,13 @@ h2 {
 <body>
 <div class="container">
 	<h1>Grams to Cups</h1>
-	<input type="number" pattern="[0-9]*" id="grams" placeholder="20" onchange="convert()"></input>
+	<input type="number" id="grams" placeholder="20" onchange="convert()"></input>
 	<label for="grams"> grams</label>
 	<p> of a substance with a density of </p>
-	<input type="number" pattern="[0-9.]*" id="density" placeholder="1.03" onchange="convert()"></input>
+	<input type="number" id="density" placeholder="1.03" onchange="convert()"></input>
 	<label for="density"> grams/cm<sup>3</sup></label>
 	<p> is the same as </p>
-	<input type="tel" pattern="[0-9.]*" id="cups" placeholder="0.0821"></input> <!--19.4175 mL-->
+	<input type="number" id="cups" placeholder="0.0821" readonly></input> <!--19.4175 mL-->
 	<label for="cups"> cups.</label>
 </div>
 <br> <br> <br> <br>
